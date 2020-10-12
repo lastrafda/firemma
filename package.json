@@ -4,7 +4,8 @@
   "description": "Firebase Crud ",
   "main": "entry.js",
   "scripts": {
-    "develop": "webpack-dev-server",
+    "build": "npx webpack --env.NODE_ENV=production --progress",
+    "develop": "webpack-dev-server --env.NODE_ENV=local",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -30,9 +31,11 @@
     "html-webpack-plugin": "^4.5.0",
     "mini-css-extract-plugin": "^1.0.0",
     "node-sass": "^4.14.1",
+    "optimize-css-assets-webpack-plugin": "^5.0.4",
     "prettier": "^2.1.2",
     "sass-loader": "^10.0.3",
     "style-loader": "^2.0.0",
+    "terser-webpack-plugin": "^4.2.3",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"
