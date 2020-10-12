@@ -58,10 +58,12 @@ module.exports = function (_env, argv) {
         template: path.resolve(__dirname, 'public/index.html'),
         inject: true,
       }),
-      new MiniCssExtractPlugin({
-        filename: 'wtf-[name].css',
-        chunkFilename: 'wtf-[id].css',
-      }),
-    ],
+      isProduction &&
+        new MiniCssExtractPlugin({
+          filename: 'assets/css/wtf-[name].[contenthash:8].css',
+          chunkFilename:
+            'assets/css/wtf-[id].[contethash:8].chunk.css',
+        }),
+    ].filter(Boolean),
   };
 };
