@@ -1,16 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './app.scss';
 import firelogo from './firebase.png';
 
 const App = () => {
-  useEffect(
-    () => console.log('NODE_ENV from webpack', process.env.NODE_ENV),
-    []
-  );
   return (
     <>
-      <img src={firelogo} />
+      <img src={firelogo} alt="logo de firebase" />
       <div className="purple">Hot module replacement is enabled</div>
+      <pre>NODE_ENV={process.env.NODE_ENV}</pre>
     </>
   );
 };

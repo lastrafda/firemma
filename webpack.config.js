@@ -5,11 +5,10 @@ const TerserWebpackPlugin = require('terser-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const webpack = require('webpack');
 
-module.exports = function (_env, argv) {
+module.exports = function (_env) {
   const isProduction = _env.NODE_ENV === 'production';
   const isDevelopment = !isProduction;
 
-  console.log('isDev', isDevelopment);
   return {
     entry: './src/entry.js',
     output: {
