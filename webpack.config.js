@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = function (_env, argv) {
   const isProduction = _env.NODE_ENV === 'production';
@@ -55,6 +56,10 @@ module.exports = function (_env, argv) {
             },
           },
         },
+        {
+          test: /\.svg$/,
+          use: ['@svgr/webpack'],
+        },
       ],
     },
     devServer: {
@@ -76,6 +81,11 @@ module.exports = function (_env, argv) {
           chunkFilename:
             'assets/css/wtf-[name].[contethash:8].chunk.css',
         }),
+      new webpack.DefinePlugin({
+        'process.env.NODE_ENV': JSON.stringify(
+          isProduction ? 'production' : 'development'
+        ),
+      }),
     ].filter(Boolean),
     optimization: {
       minimize: isProduction,
