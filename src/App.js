@@ -2,6 +2,7 @@ import React from 'react';
 import './app.scss';
 import firelogo from './firebase.png';
 import * as firebase from 'firebase/app';
+import 'firebase/analytics';
 
 firebase.initializeApp({
   apiKey: process.env.FIRE_API_KEY,
@@ -13,6 +14,7 @@ firebase.initializeApp({
   appId: process.env.FIRE_APP_ID,
   measurementId: process.env.FIRE_MEASUREMENT_ID,
 });
+firebase.analytics();
 
 const App = () => {
   return (
