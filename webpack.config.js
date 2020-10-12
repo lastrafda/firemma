@@ -11,7 +11,7 @@ module.exports = function (_env, argv) {
     entry: './src/entry.js',
     output: {
       path: path.resolve(__dirname, 'output'),
-      filename: 'my-precious.webpack.bundle.js',
+      filename: 'assets/js/[name].[hash:8].js',
     },
     module: {
       rules: [
@@ -62,7 +62,7 @@ module.exports = function (_env, argv) {
         new MiniCssExtractPlugin({
           filename: 'assets/css/wtf-[name].[contenthash:8].css',
           chunkFilename:
-            'assets/css/wtf-[id].[contethash:8].chunk.css',
+            'assets/css/wtf-[name].[contethash:8].chunk.css',
         }),
     ].filter(Boolean),
   };
