@@ -8,7 +8,8 @@
     "prettier/react"
   ],
   "rules": {
-    "no-console": "warn"
+    "no-console": "warn",
+    "react/prop-types": 0
   },
   "parser": "babel-eslint",
   "plugins": ["react", "import", "jsx-a11y", "react-hooks"],

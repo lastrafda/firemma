@@ -69,6 +69,7 @@ module.exports = function (_env) {
       open: true,
       port: 7777,
       hot: true,
+      historyApiFallback: true,
     },
     plugins: [
       new HtmlWebpackPlugin({
