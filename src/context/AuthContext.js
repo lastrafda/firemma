@@ -8,7 +8,14 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    app.auth().onAuthStateChanged(setUser);
+    app.auth().onAuthStateChanged((user) => {
+      if (user) {
+        setUser(user);
+      } else {
+        // eslint-disable-next-line no-console
+        console.log('se aburrió el usuario y se marchó');
+      }
+    });
   }, []);
 
   return (

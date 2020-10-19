@@ -11,14 +11,14 @@ import AppShell from './AppShell';
 import Fighters from './pages/Fighters/Fighters';
 import FourOFour from './pages/FourOFour';
 import Home from './pages/Home';
-import Login from './pages/Auth/Login';
+import Signin from './pages/Auth/Signin';
 import Signup from './pages/Auth/Signup';
 import { AuthContext, AuthProvider } from './context/AuthContext';
 
 const UnauthenticatedRoutes = () => (
   <Switch>
-    <Route path="/login">
-      <Login />
+    <Route path="/signin">
+      <Signin />
     </Route>
     <Route path="/signup">
       <Signup />
