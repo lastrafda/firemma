@@ -8,7 +8,6 @@ const Login = () => {
 
   const handleSignin = (event) => {
     event.preventDefault();
-    console.log('event prevent default');
     app
       .auth()
       .signInWithEmailAndPassword(email, password)
