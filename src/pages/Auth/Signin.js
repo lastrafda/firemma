@@ -1,24 +1,13 @@
 import React, { useState } from 'react';
 import './Signin.scss';
-import app from '../../Firebase/config';
-
+import { firebaseAuth } from '../../services/auth';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSignin = (event) => {
     event.preventDefault();
-    app
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // eslint-disable-next-line no-console
-        console.log(
-          `Error code: ${errorCode} \nError message: ${errorMessage}`
-        );
-      });
+    firebaseAuth.signIn(email, password);
   };
 
   const handleEmailChange = ({ target }) => {
@@ -50,6 +39,9 @@ const Login = () => {
         />
         <button type="submit">Sign In</button>
       </form>
+      <button type="button" onClick={() => firebaseAuth.signOut()}>
+        Sing out
+      </button>
     </div>
   );
 };

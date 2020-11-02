@@ -13,7 +13,10 @@ import FourOFour from './pages/FourOFour';
 import Home from './pages/Home';
 import Signin from './pages/Auth/Signin';
 import Signup from './pages/Auth/Signup';
-import { AuthContext, AuthProvider } from './context/AuthContext';
+import {
+  SessionContext,
+  SessionProvider,
+} from './context/SessionContext';
 
 const UnauthenticatedRoutes = () => (
   <Switch>
@@ -33,12 +36,12 @@ const UnauthenticatedRoutes = () => (
 );
 
 const AuthenticatedRoute = ({ children, ...rest }) => {
-  const auth = useContext(AuthContext);
+  const session = useContext(SessionContext);
   return (
     <Route
       {...rest}
       render={() =>
-        auth.user ? (
+        session.user ? (
           <AppShell>{children}</AppShell>
         ) : (
           <Redirect to="/" />
@@ -65,9 +68,9 @@ const App = () => {
   return (
     <>
       <Router>
-        <AuthProvider>
+        <SessionProvider>
           <AppRoutes />
-        </AuthProvider>
+        </SessionProvider>
       </Router>
     </>
   );
