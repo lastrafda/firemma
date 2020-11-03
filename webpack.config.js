@@ -2,13 +2,11 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const DotenvPlugin = require('dotenv-webpack');
 const webpack = require('webpack');
 
 module.exports = function (_env) {
   const isProduction = _env.NODE_ENV === 'production';
-  const isDevelopment = !isProduction;
 
   return {
     entry: './src/entry.js',
@@ -37,13 +35,13 @@ module.exports = function (_env) {
           },
         },
         {
-          test: /\.s[ac]ss$/i,
+          test: /\.css$/,
           use: [
-            isDevelopment
-              ? 'style-loader'
-              : MiniCssExtractPlugin.loader,
+            isProduction
+              ? MiniCssExtractPlugin.loader
+              : 'style-loader',
             'css-loader',
-            'sass-loader',
+            'postcss-loader',
           ],
         },
         {
@@ -107,7 +105,6 @@ module.exports = function (_env) {
             warnings: false,
           },
         }),
-        new OptimizeCssAssetsPlugin(),
       ],
     },
   };
